@@ -12,8 +12,13 @@ public class Gun : MonoBehaviour
     [SerializeField] private ParticleSystem particleSystem;
     [SerializeField] private TMP_Text ammoCount;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource src;
+    [SerializeField] private AudioClip sfx;
+    [SerializeField] private AudioClip reloadSfx;
+
     private int currAmmo;
-    private int maxAmmo = 4;
+    private int maxAmmo = 5;
     private List<GameObject> blasts = new List<GameObject>();
 
     private void Awake()
@@ -42,6 +47,9 @@ public class Gun : MonoBehaviour
         ammoCount.text = currAmmo.ToString();
 
         hitBox.enabled = true;
+
+        src.clip = sfx;
+        src.PlayOneShot(sfx);
 
         GameObject newHitObject = Instantiate(hitObject);
         newHitObject.transform.position = new Vector3(shootPoint.transform.position.x, shootPoint.transform.position.y, shootPoint.transform.position.z);
@@ -76,6 +84,8 @@ public class Gun : MonoBehaviour
     {
         if (currAmmo == maxAmmo) return;
 
+        src.clip = reloadSfx;
+        src.PlayOneShot(reloadSfx);
         currAmmo++;
         ammoCount.text = currAmmo.ToString();
         Destroy(args.interactableObject.transform.gameObject);

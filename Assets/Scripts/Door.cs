@@ -1,10 +1,11 @@
-using UnityEditor.Animations;
 using UnityEngine;
 
 public class Door : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private BoxCollider collider;
+    [SerializeField] private AudioSource src;
+    [SerializeField] private AudioClip sfx;
 
     void Start()
     {
@@ -21,8 +22,13 @@ public class Door : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            if (!collider.isTrigger)
+            {
+                src.PlayOneShot(sfx);
+            }
             animator.SetBool("playerInFront", true);
             collider.isTrigger = true;
+            
             //animator.Play("Door open", 0, 0.0f);
         }
 

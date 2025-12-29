@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
 using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TerminalModule : MonoBehaviour
@@ -10,6 +11,8 @@ public class TerminalModule : MonoBehaviour
     [SerializeField] private GameObject databaseImage;
     [SerializeField] private GameObject loginForm;
     [SerializeField] private TMP_Text userText;
+    [SerializeField] private GameObject terminateText;
+    [SerializeField] private GameObject skullBtn;
     private XRSocketInteractor socketInteractor;
 
     private void Awake()
@@ -50,7 +53,14 @@ public class TerminalModule : MonoBehaviour
 
     public void OnButtonPress()
     {
-        
+        terminateText.SetActive(true);
+        skullBtn.SetActive(true);
+    }
+
+    public void TerminateDatabase()
+    {
+        Debug.Log("You win!");
+        SceneManager.LoadScene("WinScene");
     }
 
     public void AttachSQL(SelectEnterEventArgs args)

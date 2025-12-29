@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -6,8 +7,12 @@ using UnityEngine.XR.Interaction.Toolkit.Interactors;
 public class QuestionModule : MonoBehaviour
 {
     [SerializeField] private Transform spawnTransform;
-    [SerializeField] private GameObject answer;
+    [SerializeField] private TMP_Text textAnswer;
     [SerializeField] private GameObject itemToGive;
+
+    [Header("Sound")]
+    [SerializeField] public SoundManager soundManager;
+    [SerializeField] public AudioClip sfx;
 
     private XRSocketInteractor socketInteractor;
 
@@ -20,6 +25,7 @@ public class QuestionModule : MonoBehaviour
         }
 
         socketInteractor.selectEntered.AddListener(AddAnswer);
+
     }
 
     private void OnDestroy()
@@ -29,12 +35,14 @@ public class QuestionModule : MonoBehaviour
 
     private void AddAnswer(SelectEnterEventArgs args)
     {
-        GameObject givenAwnser = args.interactableObject.transform.gameObject;
-        if ( givenAwnser == answer )
+        GameObject gObj = args.interactableObject.transform.gameObject;
+        TMP_Text givenAnswer = gObj.GetComponentInChildren<TMP_Text>();
+        if (givenAnswer.text == textAnswer.text )
         {
+            soundManager.PlaySound(sfx);
             GameObject newItem = Instantiate(itemToGive);
             newItem.transform.position = spawnTransform.position;
-            Destroy(givenAwnser);
+            Destroy(gObj);
         }
 
         /*answer = args.interactableObject.transform.gameObject;

@@ -6,6 +6,9 @@ public class EnemyAi : MonoBehaviour
     private Transform target;
     public float speed;
 
+    [SerializeField] private ItemDrop itemDrop;
+    [SerializeField] private bool hasBonusDrop = false;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -19,6 +22,12 @@ public class EnemyAi : MonoBehaviour
         if (other != null && other.CompareTag("Blast"))
         {
             Debug.Log("Enemy Shot");
+            if (hasBonusDrop)
+            {
+                Debug.Log("Item droped!");
+                GameObject newItem = Instantiate(itemDrop.DropItem());
+                newItem.transform.position = transform.position;
+            }
             Destroy(gameObject);
         }
     }

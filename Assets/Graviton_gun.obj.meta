@@ -3,7 +3,27 @@ guid: 332e110bba9b703419c4e67e777af055
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Barrel
+    second: {fileID: 2100000, guid: cf211035881a41744a95dd7424f33780, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Handle
+    second: {fileID: 2100000, guid: 1f815408792bdbf409195c1a1e24ea6a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Over_Barrel
+    second: {fileID: 2100000, guid: c1c97fda9d36db540978aad0213738d4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Under_Barrel
+    second: {fileID: 2100000, guid: f93fa0db6b633d348952094f6a6b6851, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

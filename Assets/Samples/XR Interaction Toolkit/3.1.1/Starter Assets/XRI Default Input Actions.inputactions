@@ -2088,6 +2088,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "GameMenu",
+                    "type": "Button",
+                    "id": "7a785b1a-e223-4b13-ac9f-d5e767a98409",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -2396,6 +2405,17 @@
                     "processors": "ScaleVector2(x=0),StickDeadzone",
                     "groups": "",
                     "action": "Translate Manipulation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "272ee708-249f-460e-9177-286a9195d736",
+                    "path": "<XRController>{RightHand}/{MenuButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GameMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
